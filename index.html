@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Jai 🖤</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f4efe5;
+  color: #24221e;
+}
+
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: none;
+  padding: 32px 24px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: fade 0.8s ease;
+}
+
+.page.active { display: flex; }
+
+.dark {
+  background: #191918;
+  color: #f5f0e7;
+}
+
+.eyebrow {
+  font: 11px Arial, sans-serif;
+  letter-spacing: 3px;
+  line-height: 1.8;
+  color: #8a7962;
+}
+
+.dark .eyebrow { color: #cfc3ad; }
+
+h1 {
+  font-size: clamp(34px, 9vw, 48px);
+  font-weight: normal;
+  line-height: 1.25;
+  margin: 24px 0 16px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 340px;
+}
+
+button {
+  margin-top: 28px;
+  padding: 15px 30px;
+  border: 1px solid #29251f;
+  border-radius: 40px;
+  background: #29251f;
+  color: #f5f0e7;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.dark button {
+  border-color: #cfc3ad;
+  background: transparent;
+  color: #f5f0e7;
+}
+
+button:active { transform: scale(.97); }
+
+.symbol {
+  font-size: 27px;
+  letter-spacing: 12px;
+  margin: 24px 0;
+}
+
+.letter {
+  max-width: 430px;
+  text-align: left;
+  border-top: 1px solid #d5cbbb;
+  border-bottom: 1px solid #d5cbbb;
+  padding: 15px 0;
+}
+
+.letter p { font-size: 16px; }
+
+.signature {
+  text-align: center;
+  font-style: italic;
+  margin-top: 25px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  animation: floatUp 5s linear forwards;
+  z-index: 5;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+  <div class="eyebrow">A LITTLE SOMETHING FOR YOU</div>
+
+  <h1>Hey, birthday boy…</h1>
+
+  <p>I made something special<br>just for you. 🖤</p>
+
+  <div class="symbol">♡ ✦ ♡</div>
+
+  <button onclick="showPage(2)">
+    PRESS ME ♡
+  </button>
+
+  <p class="eyebrow" style="margin-top:40px">
+    MADE WITH LOVE, JUST FOR YOU
+  </p>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page dark" id="page2">
+  <div class="eyebrow">✦ TODAY IS ALL ABOUT YOU ✦</div>
+
+  <div class="symbol">♡ ✦ ♡</div>
+
+  <h1>
+    Happy Birthday,<br>
+    <i>My love 🖤</i>
+  </h1>
+
+  <div class="symbol">♡ 🥹 ♡</div>
+
+  <p>You deserve all the happiness in the world.</p>
+
+  <button onclick="showPage(3)">
+    ONE LAST THING… 💌
+  </button>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+  <div class="eyebrow">SOMETHING FROM MY HEART</div>
+
+  <h1 style="font-size:32px">
+    To my favourite person, 🖤
+  </h1>
+
+  <div class="letter">
+    <p>Happy Birthday to my favourite person.</p>
+
+    <p>Thank you for staying, understanding me, and loving me with all your heart.</p>
+
+    <p>I'm so happy that you're trying to build our future all on your own.</p>
+
+    <p>I love you, and I hope this year brings you more joy, more strength, and everything you've been praying for.</p>
+
+    <p class="signature">
+      Happy birthday, my love 😚
+    </p>
+  </div>
+
+  <div class="symbol">♡</div>
+
+  <div class="eyebrow">ALWAYS WITH LOVE</div>
+</section>
+
+<script>
+function showPage(number) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page" + number).classList.add("active");
+  window.scrollTo(0, 0);
+
+  if (number === 2) {
+    for (let i = 0; i < 18; i++) {
+      setTimeout(createHeart, i * 180);
+    }
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = Math.random() > 0.5 ? "♡" : "✦";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 18) + "px";
+  heart.style.color = Math.random() > 0.5 ? "#d5cbbb" : "#8a7962";
+
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5200);
+}
+</script>
+
+</body>
+</html>
